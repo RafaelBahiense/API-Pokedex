@@ -5,7 +5,7 @@ import insertAllPokes from "./functions/insertAllPokes";
 
 async function main() {
   const APIURL = "https://pokeapi.co/api/v2/";
-  const count = 10;
+  const count = parseInt(process.env.POKE_COUNT || "898");
   const pokes = await getAllPokes(APIURL, count);
   await connectDatabase();
   await insertAllPokes(pokes, count);
