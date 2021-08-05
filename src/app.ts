@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import "reflect-metadata";
 
-import connectDatabase from "./database";
+import connectDatabase from "./config/database";
 
 import * as userController from "./controllers/userConroller";
 

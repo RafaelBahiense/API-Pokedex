@@ -1,21 +1,32 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import PokemonUser from "./Pokemon_Users"
-import Sessions from "./Sessions";
 
-@Entity("users")
-export default class User {
+@Entity("pokemons")
+export default class Pokemon {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()
-  email!: string;
+  name!: string;
 
   @Column()
-  password!: string;
+  number!: number;
+
+  @Column()
+  image!: string;
+
+  @Column()
+  weight!: number;
+
+  @Column()
+  height!: number;
+
+  @Column()
+  baseExp!: number;
+
+  @Column()
+  description!: string;
 
   @OneToMany(() => PokemonUser, (pokemon_user) => pokemon_user.userId)
   pokemon_user!: PokemonUser[];
-
-  @OneToMany(() => Sessions, (sessions) => sessions.userId)
-  sessions!: Sessions[];
 }
