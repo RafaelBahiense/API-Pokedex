@@ -1,14 +1,32 @@
-import { getRepository } from "typeorm";
+import faker from "faker";
 
-import User from "../../src/entities/User";
+export class UserEntry {
+  public email: string | null;
+  public password: string | null;
 
-export async function createUser () {
-  const user = await getRepository(User).create({
-    email: "email@email.com",
-    password: "123456"
-  });
+  constructor({
+    email = faker.internet.email(),
+    password = faker.internet.password(8),
+  }) {
+    this.email = email;
+    this.password = password;
+  }
+}
 
-  await getRepository(User).save(user);
+export class RegisterUser extends UserEntry {
+  public confirmPassword: string | null;
 
-  return user;
+  constructor({
+    email = undefined,
+    password = undefined,
+    confirmPassword = undefined,
+  }: {
+    email?: any;
+    password?: any;
+    confirmPassword?: any;
+  }) {
+    super({ email, password });
+    if (confirmPassword) this.confirmPassword = confirmPassword;
+    else this.confirmPassword = this.password;
+  }
 }
