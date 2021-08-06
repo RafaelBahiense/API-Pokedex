@@ -1,18 +1,19 @@
-import "./setup";
-
-import express from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import "reflect-metadata";
 
+import { MainRouter } from "./routes/mainRouter";
+import errorHandler, { jsonError} from "./controllers/error/errorController";
 import connectDatabase from "./config/database";
 
-import * as userController from "./controllers/userConroller";
 
-const app = express();
+const app: Application = express();
+
 app.use(cors());
 app.use(express.json());
-
-app.get("/users", userController.getUsers);
+app.use(jsonError);
+app.use("/api", MainRouter);
+app.use(errorHandler);
 
 export async function init () {
   await connectDatabase();
