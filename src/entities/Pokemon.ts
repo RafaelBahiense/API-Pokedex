@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Unique } from "typeorm";
 import PokemonUser from "./Pokemon_Users"
 
 @Entity("pokemons")
+@Unique(["name", "number"])
 export default class Pokemon {
   @PrimaryGeneratedColumn()
   id!: number;
