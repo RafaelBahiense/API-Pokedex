@@ -6,11 +6,15 @@ enum ServiceCodes {
   wrongPassword,
 }
 
-export default function databaseError(err: ServiceError) {
+export default function serviceError(err: ServiceError) {
   switch (err.code) {
     case ServiceCodes.notExistent:
       logger.info(err);
       return 409;
+
+    case ServiceCodes.wrongPassword:
+      logger.info(err);
+      return 401;
 
     default:
       logger.error(err);

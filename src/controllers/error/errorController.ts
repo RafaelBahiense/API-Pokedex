@@ -21,7 +21,6 @@ export default function errorHandler(
   else if (err instanceof ValidationError) statusCode = joiError(err);
   else if (err instanceof error.ServiceError) statusCode = serviceError(err);
   else if (err instanceof QueryFailedError) statusCode = databaseError(err as any);
-  else if (err instanceof error.ServiceError) statusCode = serviceError(err);
   else {
     logger.error(err);
     statusCode = 500;
@@ -36,12 +35,12 @@ export default function errorHandler(
 }
 
 export function jsonError(
-  error: any,
+  err: any,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  if (error instanceof SyntaxError) {
+  if (err instanceof SyntaxError) {
     res.sendStatus(400);
   } else {
     next();

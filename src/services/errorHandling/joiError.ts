@@ -3,7 +3,6 @@ import { ValidationError } from "joi";
 import logger from "../../utilities/logger";
 
 export default function joiError(err: ValidationError) {
-  console.log("joi error");
   switch (err.details[0].type) {
     case "string.empty":
     case "string.min":
