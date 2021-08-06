@@ -1,12 +1,39 @@
-import { Request, Response } from "express";
 import { getRepository } from "typeorm";
+import JWT from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 import User from "../entities/User";
+import Sessions from "../entities/Sessions";
+import { ReceivedUser, User as UserInterface } from "../interfaces/User";
+import { Register, Login } from "../schemas/schema";
+import * as error from "../types/errorTypes";
+import { jwtConfigs, secret } from "../config/jwt";
 
-export async function getUsers () {
-  const users = await getRepository(User).find({
-    select: ["id", "email"]
-  });
-  
-  return users;
+export async function register({
+  email,
+  password,
+  confirmPassword,
+}: ReceivedUser) {
+  await Register.validateAsync({ email, password, confirmPassword });
+  const hash = bcrypt.hashSync(password, 12);
+
+  await getRepository(User).insert({ email, hash });
+}
+
+export async function login({ email, password }: UserInterface) {
+  await Login.validateAsync({ email, password });
+
+  const result = await getRepository(User).findOne({ email });
+
+  error.service.notExistent();
+  if (!result) throw error.service;
+
+  error.service.wrongPassword()
+  if (!bcrypt.compareSync(password, result.hash))
+    throw error.service;
+
+  const token = JWT.sign({ email }, secret, jwtConfigs);
+  await getRepository(Sessions).insert({ userId: result.id, token });
+
+  return token;
 }
