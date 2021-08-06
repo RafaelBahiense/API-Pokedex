@@ -32,7 +32,7 @@ export async function login({ email, password }: UserInterface) {
   if (!bcrypt.compareSync(password, result.hash))
     throw error.service;
 
-  const token = JWT.sign({ email }, secret, jwtConfigs);
+  const token = JWT.sign({ id: result.id, email }, secret, jwtConfigs);
   await getRepository(Sessions).insert({ userId: result.id, token });
 
   return token;
