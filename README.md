@@ -49,7 +49,7 @@ This is an web application with which lots of people can track their Pokédex co
 
 1. Clone this repository
 2. Clone the [Frontend repository]
-3. Follow instructions [to run Backend]
+3. Follow instructions [to run the Frontend]
 4. Install dependencies
 ```bash
 npm i
@@ -65,4 +65,4 @@ npm run dev
 or run the Frontend and access http://localhost:3000 on your favorite browser
 
 [Frontend repository]: https://github.com/RafaelBahiense/Pokedex-Frontend
-[to run Backend]: https://github.com/RafaelBahiense/Pokedex-Frontend#how-to-run
+[to run the Frontend]: https://github.com/RafaelBahiense/Pokedex-Frontend#how-to-run
