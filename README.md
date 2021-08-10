@@ -3,7 +3,7 @@
 ### A simple and lightweight pokédex, Typescript and TypeORM
 
 <p align="center">
-  <img src="project.gif">
+  <img src="https://github.com/RafaelBahiense/Pokedex/blob/main/assets/project.gif">
 </p>
 
 <p align="center">
@@ -21,7 +21,8 @@ This is an web application with which lots of people can track their Pokédex co
 - Remove Pokémon
 - List my pokémons
 
-[Project repo]("https://github.com/RafaelBahiense/Pokedex")
+[Project repo]
+
 
 ## Technologies
 
@@ -41,24 +42,27 @@ This is an web application with which lots of people can track their Pokédex co
 [express]: https://expressjs.com/
 [typescript]: https://www.typescriptlang.org/
 [typeorm]: https://typeorm.io/
+[Project repo]: https://github.com/RafaelBahiense/Pokedex"
 
 
 ## How to run
 
 1. Clone this repository
-2. Clone the [Frontend repository]("https://github.com/RafaelBahiense/Pokedex-Frontend")
-3. Follow instructions [to run Backend]("https://github.com/my-user/my-project-backend#how-to-run")
+2. Clone the [Frontend repository]
+3. Follow instructions [to run Backend]
 4. Install dependencies
 ```bash
 npm i
 ```
-5. Run the Backend with
+5. Create a PostgresSQL database "your_database_dev" and "your_database_test"
+6. rename `example.local.dev.env` -> `local.dev.env` and `example.local.test.env` -> `local.test.env`
+7. Config .env files as indicated
+8. Run the Backend with
 ```bash
-npm start
+npm run dev
 ```
-6. You can optionally build the project running
-```bash
-npm run build
-```
-7. Finally access http://localhost:4000/api/"desired route" on your favorite API Client 
+9. Finally access http://localhost:4000/api/"desired-route" on your favorite API Client 
 or run the Frontend and access http://localhost:3000 on your favorite browser
+
+[Frontend repository]: https://github.com/RafaelBahiense/Pokedex-Frontend
+[to run Backend]: https://github.com/my-user/my-project-backend#how-to-run
