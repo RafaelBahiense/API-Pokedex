@@ -42,7 +42,7 @@ This is an web application with which lots of people can track their Pokédex co
 [express]: https://expressjs.com/
 [typescript]: https://www.typescriptlang.org/
 [typeorm]: https://typeorm.io/
-[Project repo]: https://github.com/RafaelBahiense/Pokedex"
+[Project repo]: https://github.com/RafaelBahiense/Pokedex
 
 
 ## How to run
