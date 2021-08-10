@@ -65,4 +65,4 @@ npm run dev
 or run the Frontend and access http://localhost:3000 on your favorite browser
 
 [Frontend repository]: https://github.com/RafaelBahiense/Pokedex-Frontend
-[to run Backend]: https://github.com/my-user/my-project-backend#how-to-run
+[to run Backend]: https://github.com/RafaelBahiense/Pokedex-Frontend#how-to-run
